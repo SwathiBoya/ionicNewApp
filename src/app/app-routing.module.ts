@@ -6,6 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddcustomerComponent } from './addcustomer/addcustomer.component';
 import { ListcustomerComponent } from './listcustomer/listcustomer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { EditcustomerComponent } from './editcustomer/editcustomer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -34,6 +35,10 @@ const routes: Routes = [
     path:'aboutus',
     component:AboutusComponent,
   },
+  {
+    path:'editcustomer/:id',
+    component:EditcustomerComponent,
+  }
 ];
 
 @NgModule({

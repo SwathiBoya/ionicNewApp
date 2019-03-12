@@ -13,6 +13,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddcustomerComponent } from './addcustomer/addcustomer.component';
 import { ListcustomerComponent } from './listcustomer/listcustomer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { EditcustomerComponent } from './editcustomer/editcustomer.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
@@ -27,7 +28,8 @@ import { FormsModule } from "@angular/forms";
     AddcustomerComponent,
     ListcustomerComponent,
     AboutusComponent,
-    MenuComponent
+    MenuComponent,
+    EditcustomerComponent
   ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule],
