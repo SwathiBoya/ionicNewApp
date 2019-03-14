@@ -62,6 +62,8 @@ export class CustomerService {
     customer.id = Math.round(Math.random()*10000);
     this.customers.push(customer);    
     this.setLocaStorageCustomer(this.customers);
+    console.log(this.customers);
+
   }
   deleteCustomer(id){
     var list = [];
@@ -91,7 +93,11 @@ export class CustomerService {
         break;
       }
     }
-    this.setLocaStorageCustomer(this.customers);
+    if(!update){
+      this.customers.push(customer);
+      customer.id = Math.round(Math.random()*10000);
+      this.setLocaStorageCustomer(this.customers);   
+    }
   }
   getCustomerById(id){
     for(var i=0;i<this.customers.length;i++){

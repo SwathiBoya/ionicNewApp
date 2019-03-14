@@ -10,6 +10,7 @@ import { EditcustomerComponent } from './editcustomer/editcustomer.component';
 import { StudentComponent } from './student/student.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { ListStudentComponent } from './list-student/list-student.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path:'list-student',
     component:ListStudentComponent,
+  },
+  {
+    path:'edit-student/:rollno',
+    component:EditStudentComponent,
   }
 ];
 
