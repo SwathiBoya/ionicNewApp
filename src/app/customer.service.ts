@@ -27,7 +27,9 @@ export class CustomerService {
     if(localStorage.getItem('customers')==null || JSON.parse(localStorage.getItem('customers')).length==0)
     {
       this.customer = defaultList;
-
+      this.setLocaStorageCustomer(this.customer);
+    }else{
+      this.getLocaStorageCustomer();
     }
   }
   getLocaStorageCustomer(){
@@ -58,7 +60,8 @@ export class CustomerService {
   }
   addCustomer(customer){
     customer.id = Math.round(Math.random()*10000);
-    this.customers.push(customer);         
+    this.customers.push(customer);    
+    this.setLocaStorageCustomer(this.customers);
   }
   deleteCustomer(id){
     var list = [];
@@ -67,29 +70,28 @@ export class CustomerService {
         list.push(this.customers[i]);
       }
     }
+    this.setLocaStorageCustomer(this.customers);
     return this.customers = list;
   }
   updateCustomer(customer){
     for(var i=0; i<this.customers.length;i++){
-      if(this.customers[i].id=customer.id){
-        return this.customers[i];
+      if(this.customers[i].id==customer.id){
+      this.customers[i]=customer;
       }
     }
+    this.setLocaStorageCustomer(this.customers);
   }
   addUpdateCustomer(customer){
     var update = false;
     for(var i=0; i<this.customers.length;i++){
-      if(this.customers[i].id=customer.id){
+      if(this.customers[i].id==customer.id){
         update = true;
         this.customers[i]=customer;
         // return this.customers[i];
         break;
       }
     }
-    if(!update){
-      customer.id = Math.round(Math.random()*10000);
-      this.customers.push(customer); 
-    }
+    this.setLocaStorageCustomer(this.customers);
   }
   getCustomerById(id){
     for(var i=0;i<this.customers.length;i++){
@@ -97,6 +99,7 @@ export class CustomerService {
         return this.customers[i];
       }
     }
-    return null;
+    this.setLocaStorageCustomer(this.customers);
   }
+  
 }

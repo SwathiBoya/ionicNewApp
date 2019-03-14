@@ -7,6 +7,9 @@ import { AddcustomerComponent } from './addcustomer/addcustomer.component';
 import { ListcustomerComponent } from './listcustomer/listcustomer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditcustomerComponent } from './editcustomer/editcustomer.component';
+import { StudentComponent } from './student/student.component';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { ListStudentComponent } from './list-student/list-student.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -38,6 +41,18 @@ const routes: Routes = [
   {
     path:'editcustomer/:id',
     component:EditcustomerComponent,
+  },
+  {
+    path:'student',
+    component:StudentComponent,
+  },
+  {
+    path:'add-student',
+    component:AddStudentComponent,
+  },
+  {
+    path:'list-student',
+    component:ListStudentComponent,
   }
 ];
 

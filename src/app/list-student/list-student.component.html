@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>
+          Students List
+      </ion-title>
+  </ion-toolbar>
+  </ion-header>
+  <ion-content>
+  <ion-card *ngFor="let s of list">
+      
+    <ion-card-header>
+      <ion-card-title>{{s.firstname}} {{s.lastname}} 
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+          <ion-label>{{s.dob}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>{{s.stdclass}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>{{s.classteacher}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{s.address}}</ion-label>
+    </ion-item>
+  </ion-card-content>
+  </ion-card>
+  </ion-content>

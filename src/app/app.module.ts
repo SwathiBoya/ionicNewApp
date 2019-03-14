@@ -14,6 +14,9 @@ import { AddcustomerComponent } from './addcustomer/addcustomer.component';
 import { ListcustomerComponent } from './listcustomer/listcustomer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditcustomerComponent } from './editcustomer/editcustomer.component';
+import { StudentComponent } from './student/student.component';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { ListStudentComponent } from './list-student/list-student.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
@@ -29,7 +32,10 @@ import { FormsModule } from "@angular/forms";
     ListcustomerComponent,
     AboutusComponent,
     MenuComponent,
-    EditcustomerComponent
+    EditcustomerComponent,
+    AddStudentComponent,
+    ListStudentComponent,
+    StudentComponent
   ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule],

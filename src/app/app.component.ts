@@ -31,6 +31,11 @@ export class AppComponent {
       icon: 'information-circle-outline'
     },
     {
+      title: 'Student',
+      url: '/student',
+      icon: 'contacts'
+    },
+    {
       title: 'Logout',
       url: '/login',
       icon: 'exit'
