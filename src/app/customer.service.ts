@@ -1,13 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  
+    // customers: any = [
+  //   {
+  //     id:1,
+  //     name:'Swathi',
+  //     email:'swathi@gmail.com',
+  //     phone:'9999999999',
+  //     address:'India'
+  //   },
+  //   {
+  //     id:2,
+  //     name:'Divya',
+  //     email:'divya@gmail.com',
+  //     phone:'992343499',
+  //     address:'India'
+  //   }
+  // ];
   customer:any=[];
   customers:any = [];
-  constructor() { 
+  private customerUrl = 'http://localhost:3000/api/customers';
+  constructor(private http: HttpClient) { 
     var defaultList =[
       {
         id:1,
@@ -38,23 +57,27 @@ export class CustomerService {
   setLocaStorageCustomer(list){
     localStorage.setItem('customers',JSON.stringify(list))
   }
-  // customers: any = [
-  //   {
-  //     id:1,
-  //     name:'Swathi',
-  //     email:'swathi@gmail.com',
-  //     phone:'9999999999',
-  //     address:'India'
-  //   },
-  //   {
-  //     id:2,
-  //     name:'Divya',
-  //     email:'divya@gmail.com',
-  //     phone:'992343499',
-  //     address:'India'
-  //   }
-  // ];
+  getDBCustomers (){
+    this.http.get<[]>(this.customerUrl).subscribe((result)=>{console.log(JSON.stringify(result))});
+  }
+  getRemoteCustomers(): Observable<[]>{
+  	return this.http.get<[]>(this.customerUrl); 		
+  }
+  deleteRemoteCustomer(customer){
+  	return this.http.delete(this.customerUrl+"/"+customer.id); 		
+  } 
   
+  addRemoteCustomer(customer):Observable<any>{
+  	return this.http.post(this.customerUrl,customer);
+ }
+  updateRemoteCustomer(customer):Observable<any>{
+    return this.http.put(this.customerUrl + "/"+customer.id,customer);
+  }
+
+  getRemoteCustomerById(id):Observable<any>{
+  return this.http.get<[]>(this.customerUrl + "/"+id);
+  }
+
   getCustomer(){
     return this.customers;
   }
@@ -65,16 +88,16 @@ export class CustomerService {
     console.log(this.customers);
 
   }
-  deleteCustomer(id){
-    var list = [];
-    for(var i=0;i<this.customers.length;i++){
-      if(id!== this.customers[i].id){
-        list.push(this.customers[i]);
-      }
-    }
-    this.setLocaStorageCustomer(this.customers);
-    return this.customers = list;
-  }
+  // deleteCustomer(id){
+  //   var list = [];
+  //   for(var i=0;i<this.customers.length;i++){
+  //     if(id!== this.customers[i].id){
+  //       list.push(this.customers[i]);
+  //     }
+  //   }
+  //   this.setLocaStorageCustomer(this.customers);
+  //   return this.customers = list;
+  // }
   updateCustomer(customer){
     for(var i=0; i<this.customers.length;i++){
       if(this.customers[i].id==customer.id){
@@ -99,13 +122,13 @@ export class CustomerService {
       this.setLocaStorageCustomer(this.customers);   
     }
   }
-  getCustomerById(id){
-    for(var i=0;i<this.customers.length;i++){
-      if(this.customers[i].id==id ){
-        return this.customers[i];
-      }
-    }
-    this.setLocaStorageCustomer(this.customers);
-  }
+  // getCustomerById(id){
+  //   for(var i=0;i<this.customers.length;i++){
+  //     if(this.customers[i].id==id ){
+  //       return this.customers[i];
+  //     }
+  //   }
+  //   this.setLocaStorageCustomer(this.customers);
+  // }
   
 }

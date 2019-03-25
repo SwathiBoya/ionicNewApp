@@ -17,10 +17,12 @@ export class AddcustomerComponent implements OnInit {
     phone:"",
     address:""
   };
+  list = [];
   ngOnInit() {}
   onAdd(customer){
-     this.customerService.addCustomer(customer);
-     this.router.navigate(['/listcustomer']); 
+    //  this.customerService.addCustomer(customer);
+    //  this.router.navigate(['/listcustomer']); 
+    this.customerService.addRemoteCustomer(this.customer).subscribe(()=>{this.router.navigate(['/listcustomer']);});
   }
   
 }
